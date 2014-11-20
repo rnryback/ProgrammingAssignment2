@@ -1,15 +1,28 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Write a short comment describing this function:creates a matrix and stores it in cache
 
-## Write a short comment describing this function
+mkcmatrix <- function(a = matrix()) {
+m<-NULL
+set<-function(b){
+        a<<-b
+        m<<-NULL
+                }
+get<-function()a
+setinv <- function(solve) m<<- solve 
+getinv <- function() m
+list(set=set,get=get,setinv=setinv,getinv=getinv)
+                                        }
 
-makeCacheMatrix <- function(x = matrix()) {
 
-}
+## Write a short comment describing this function:using the matrix created with the previous function,
+## calculates the inverse (checking before if the calculation has been made)
 
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+csolve <- function(a, ...) {
+        m<-a$getinv()
+        if(!is.null(m)){
+                message("work in progress")
+                return(m)
+                        }
+data<-a$get()
+m<-solve(data,...)
+a$setinv(m)
 }
